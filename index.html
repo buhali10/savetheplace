@@ -1,0 +1,104 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SAVE THE PLACE</title>
+    <!-- materialize icons, css & js -->
+    <link type="text/css" href="/css/materialize.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" href="/css/styles.css" rel="stylesheet">
+    <link rel="manifest" href="/manifest.webmanifest">
+    <script type="text/javascript" src="/js/materialize.min.js"></script>
+    <link rel="apple-touch-icon" href="/img/icons/icon-192x192.png">
+    <meta name="apple-mobile-web-app-status-bar" content="#FFE1C4">
+    <meta name="theme-color" content="#c4f9c5">
+</head>
+
+<body class="grey lighten-4">
+
+    <!-- top nav -->
+    <nav class="z-depth-0">
+        <div class="nav-wrapper container">
+            <a href="/"><span>Save the place</span></a>
+            <span class="right">
+                <i class="material-icons sidenav-trigger" data-target="side-menu">menu</i>
+            </span>
+        </div>
+    </nav>
+
+    <div class="center">
+        <a class="btn-floating btn-small btn-large add-btn sidenav-trigger" data-target="side-form">
+            <i class="material-icons">add</i>
+        </a>
+    </div>
+
+    <!-- side nav -->
+    <ul id="side-menu" class="sidenav side-menu">
+        <li><a class="subheader">SAVE THE PLACE</a></li>
+        <li><a href="/" class="waves-effect">Home</a></li>
+        <li><a href="/pages/about.html" class="waves-effect">About</a></li>
+    </ul>
+
+    <!-- places -->
+    <div class="places container grey-text text-darken-1">
+
+    </div>
+
+    <!-- add place side nav -->
+    <div id="side-form" class="sidenav side-form">
+        <form class="add-place container section">
+            <h6>NEW PLACE</h6>
+            <div class="divider"></div>
+            <div class="input-field">
+                <input placeholder="Brandenburger Tor" id="name" type="text" class="validate">
+                <label for="name">Place name</label>
+            </div>
+            <div class="input-field">
+                <input placeholder="Berlin" id="city" type="text" class="validate">
+                <label for="city">City</label>
+            </div>
+            <div class="input-field">
+                <i class="material-icons prefix">photo_camera</i>
+                <textarea id="icon_prefix" class="materialize-textarea"></textarea>
+                <label for="icon_prefix">.png or .jng file</label>
+            </div>
+            <div class="input-field">
+                <i class="material-icons prefix" id="location-icon">my_location</i>
+                <input placeholder="your location" id="location" type="text" class="validate">
+            </div>
+            <div></div>
+            <div class="input-field center">
+                <button class="btn">Add</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyCZqb22ogsH-dKbE28e4bv5UbfTJNjZkGk",
+            authDomain: "save-the-place-app.firebaseapp.com",
+            projectId: "save-the-place-app",
+            storageBucket: "save-the-place-app.appspot.com",
+            messagingSenderId: "605267219747",
+            appId: "1:605267219747:web:f188d3105fa2ea84aba896"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+    </script>
+    <script src="/js/javascript.js"></script>
+    <script src="/js/db.js"></script>
+    <script src="/js/app.js"></script>
+</body>
+
+</html>

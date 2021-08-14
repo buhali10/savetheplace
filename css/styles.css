@@ -1,0 +1,78 @@
+/* colours */
+:root{
+    --primary: #c4f9c5;
+    --secondary: #c4f9c5;
+    --name: #1C6E55;
+}
+
+/* layout styles */
+nav{
+    background: var(--primary);
+    border-bottom: 10px solid var(--secondary);
+}
+nav a{
+    text-transform: uppercase;
+    color: var(--name);
+}
+nav a span{
+    font-weight: bold;
+    font-size: 20px;
+}
+nav .sidenav-trigger{
+    margin: 0;
+    color: var(--name);
+}
+
+/* place styles */
+.places{
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+.card-panel.place{
+    border-radius: 10px;
+    padding: 10px;
+    position: relative;
+}
+.place img{
+    grid-area: image;
+    width: 100%;
+}
+
+.place-details{
+    grid-area: details;
+    margin-bottom: 10px;
+}
+.place-delete{
+    grid-area: delete;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+.place-delete i{
+    font-size: 18px;
+}
+.place-name{
+    font-weight: bold;
+}
+.place-city{
+    font-size: 0.8em;
+}
+
+/* form-styles */
+.add-btn{
+    background: var(--name) !important;
+    margin-top: 10px;
+}
+input{
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+}
+.side-form button{
+    background: var(--name);
+    box-shadow: 1px 1px 3px rgba(90,90,90,0.2);
+}
+form .input-field{
+    margin-top: 20px;
+}
