@@ -9,9 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
   M.Sidenav.init(forms, {edge: 'left'});
 });
 
-let locationButton = document.querySelector('#location-btn');
-let locationLoader = document.querySelector('#location-loader');
-let fetchedLocation;
 
 // render place data
 const renderplace = (data, id) => {
@@ -19,9 +16,12 @@ const renderplace = (data, id) => {
   const html = `
     <div class="card-panel place white row" data-id="${id}">
       <div class="place-details">
-        <div class="place-photo">${data.photo}</div>
         <div class="place-name">${data.name}</div>
         <div class="place-city">${data.city}</div>
+        <div class="card-action">
+        <a href="https://www.google.com/maps/search/?api=1&query=${data.latitude},<${data.longtitude}>">Go To Map</a>
+        
+    </div>
       </div>
       <div class="place-delete">
         <i class="material-icons" data-id="${id}">delete_outline</i>
