@@ -32,7 +32,7 @@ const renderplace = (data, id) => {
 
 };
 
-const removePlace = (id) => {
+const removeplace = (id) => {
   const place = document.querySelector(`.place[data-id=${id}]`);
   place.remove();
 };

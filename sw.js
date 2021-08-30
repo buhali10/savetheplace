@@ -1,4 +1,4 @@
-const staticCacheName = 'site-static-v2';
+const staticCacheName = 'site-static-v3';
 const dynamicCacheName = 'site-dynamic-v3';
 const assets = [
   '/',
@@ -10,7 +10,8 @@ const assets = [
   '/css/materialize.min.css',
   'https://fonts.googleapis.com/icon?family=Material+Icons',
   'https://fonts.gstatic.com/s/materialicons/v47/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2',
-  '/about.html'
+  '/about.html', 
+  '/firebase-messaging-sw.js'
 ];
 
 // cache size limit function

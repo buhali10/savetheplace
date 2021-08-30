@@ -48,28 +48,32 @@
 
     <!-- add place side nav -->
     <div id="side-form" class="sidenav side-form">
-        <form class="add-place container section">
+        <form class="add-place container section" onsubmit="add_place()">
             <h6>NEW PLACE</h6>
             <div class="divider"></div>
             <div class="input-field">
-                <input placeholder="Brandenburger Tor" id="name" type="text" class="validate">
+                <input placeholder="Brandenburger Tor" id="name" type="text" class="validate" required>
                 <label for="name">Place name</label>
             </div>
             <div class="input-field">
-                <input placeholder="Berlin" id="city" type="text" class="validate">
+                <input placeholder="Berlin" id="city" type="text" class="validate" required>
                 <label for="city">City</label>
             </div>
             <div class="input-field">
-                <textarea id="icon_prefix" class="materialize-textarea"></textarea>
-                <i class="material-icons prefix">photo_camera</i>
+                <input type="file" id="files" ></input>
             </div>
+
+            <div class="input-field">
+                <img src = "" id="myframe" class="image-placeholder" width="200px"> </img>
+            </div>
+ 
             <div class="input-field" id="locator-input-section">
-                <input type="text" placeholder="Enter Your Address" id="autocomplete"/>
+                <input type="text" placeholder="Enter Your Address" id="autocomplete" required/>
                 <i class="material-icons prefix" id="locator-button">my_location</i>
             </div>
-            <div></div>
+            <div></div> 
             <div class="input-field center">
-                <button class="btn">Add</button>
+                <button class="btn" type="submit">Add</button>
             </div>
         </form>
     </div>
@@ -77,6 +81,7 @@
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-storage.js"></script> 
 
     <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
@@ -94,6 +99,7 @@
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
+
     </script>
     <script src="/js/javascript.js"></script>
     <script src="/js/db.js"></script>
