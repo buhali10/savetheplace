@@ -128,9 +128,9 @@ function add_place() {
 
 // remove a place
 const placeContainer = document.querySelector('.places');
-placeContainer.addEventListener('click', evt => {
-  if (evt.target.tagName === 'I') {
-    const id = evt.target.getAttribute('data-id');
+placeContainer.addEventListener('click', event => {
+  if (event.target.tagName === 'I') {
+    const id = event.target.getAttribute('data-id');
     //console.log(id);
     db.collection('places').doc(id).delete();
     console.log('Object' + id + 'is deleted')

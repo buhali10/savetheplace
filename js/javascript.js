@@ -28,7 +28,6 @@ const renderplace = (data, id) => {
   </div>
 `;
 places.innerHTML += html;
-
 };
 
 const removeplace = (id) => {

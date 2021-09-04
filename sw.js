@@ -1,16 +1,22 @@
-const staticCacheName = 'site-static-v3';
+const staticCacheName = 'site-static-v5';
 const dynamicCacheName = 'site-dynamic-v3';
 const assets = [
   '/',
   '/index.html',
   '/js/app.js',
-  '/js/ui.js',
+  '/js/javascript.js',
   '/js/materialize.min.js',
   '/css/styles.css',
   '/css/materialize.min.css',
+  '/img/icons/icon-192x192.png',
+  '/img/icons/icon-256x256.png',
+  '/img/icons/icon-384x384.png',
+  '/img/icons/icon-512x512.png',
+  '/img/my-logo.png',
+  '/img/placeholder-image.png',
   'https://fonts.googleapis.com/icon?family=Material+Icons',
   'https://fonts.gstatic.com/s/materialicons/v47/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2',
-  '/about.html', 
+  '/pages/about.html', 
   '/firebase-messaging-sw.js'
 ];
 
@@ -63,10 +69,6 @@ self.addEventListener('fetch', evt => {
             return fetchRes;
           })
         });
-      }).catch(() => {
-        if(evt.request.url.indexOf('.html') > -1){
-          return caches.match('/pages/fallback.html');
-        } 
       })
     );
   }
