@@ -12,23 +12,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // render place data
 const renderplace = (data, id) => {
-
   const html = `
-    <div class="card-panel place white row" data-id="${id}">
-      <div class="place-details">
-        <div class="place-name">${data.name}</div>
-        <div class="place-city">${data.city}</div>
-        <div class="card-action">
-        <a href="https://www.google.com/maps/search/?api=1&query=${data.latitude},<${data.longtitude}>">Go To Map</a>
-        
+  <div class="card-panel place white row" data-id="${id}">
+    <div class="place-details">
+      <div class="place-name">${data.name}</div>
+      <div class="place-city">${data.city}</div>
+      <div class="image"><img src="${data.picurl}" alt="Northern Lights" width="500" height="300"></div>
+       <div class="card-action">
+       <a target="_blank" href="https://www.google.com/maps/search/?api=1&query=${data.location.latitude},${data.location.longitude}">Go To Map</a>
+     </div>
+  </div>
+    <div class="place-delete">
+      <i class="material-icons" data-id="${id}">delete_outline</i>
     </div>
-      </div>
-      <div class="place-delete">
-        <i class="material-icons" data-id="${id}">delete_outline</i>
-      </div>
-    </div>
-  `;
-  places.innerHTML += html;
+  </div>
+`;
+places.innerHTML += html;
 
 };
 

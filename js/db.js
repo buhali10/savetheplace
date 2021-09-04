@@ -1,5 +1,3 @@
-// Global
-
 var currentlatitude = '';
 var currentlongitude = '';
 var pic_url = '';
@@ -139,6 +137,3 @@ placeContainer.addEventListener('click', evt => {
     location.reload('/')
   }
 })
-
-
-
