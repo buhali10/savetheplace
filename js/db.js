@@ -3,6 +3,8 @@ var currentlongitude = '';
 var pic_url = '';
 var my_pic = '';
 
+
+
 // enable offline data
 db.enablePersistence()
   .catch(function (err) {
@@ -27,6 +29,8 @@ db.collection('places').onSnapshot(snapshot => {
   });
 });
 
+
+// geolocation
 (function () {
   var locatorSection = document.getElementById("locator-input-section")
 
@@ -69,27 +73,85 @@ db.collection('places').onSnapshot(snapshot => {
   }
 
   init()
+})();
 
+// camera access 
+(function () {
+  function startMedia() {
+    let videoPlayer = document.querySelector('#player');
+    let canvasElement = document.querySelector('#canvas');
+    let captureButton = document.querySelector('#capture-btn');
+    let imagePicker = document.querySelector('#image-picker');
+    let imagePickerArea = document.querySelector('#pick-image');
+    // let canvas = document.querySelector("#myframe");
+
+    if (!('mediaDevices' in navigator)) {
+      navigator.mediaDevices = {};
+    }
+
+    if (!('getUserMedia' in navigator.mediaDevices)) {
+      navigator.mediaDevices.getUserMedia = function (constraints) {
+        let getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+
+        if (!getUserMedia) {
+          return Promise.reject(new Error('getUserMedia is not implemented'));
+        }
+
+        return new Promise((resolve, reject) => {
+          getUserMedia.call(navigator, constraints, resolve, reject);
+        })
+      }
+    }
+
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(stream => {
+        videoPlayer.srcObject = stream;
+        videoPlayer.play();
+        videoPlayer.style.display = 'block';
+
+      })
+      .catch(err => {
+        imagePickerArea.style.display = 'block';
+        captureButton.style.display = 'none';
+      });
+
+    captureButton.addEventListener('click', event => {
+      canvasElement.style.display = 'block';
+      videoPlayer.style.display = 'none';
+      captureButton.style.display = 'block';
+      let context = canvasElement.getContext('2d');
+      context.drawImage(videoPlayer, 0, 0, canvasElement.width, canvasElement.height);;
+      /*  videoPlayer.srcObject.getVideoTracks().forEach(track => {
+         track.stop();
+       }) */
+      my_pic = canvasElement.toDataURL('image/jpeg');
+      // data url of the image
+      console.log("Capture this photo" + my_pic);
+      uploadImage(my_pic);
+      alert("Capture a photo successfully!")
+    });
+  }
+  window.addEventListener('load', startMedia, false);
 })();
 
 
 // Configure File
 
 var files = [];
-document.getElementById("files").addEventListener("change", function (e) {
+document.getElementById("image-picker").addEventListener("change", function (e) {
   files = e.target.files;
-  my_pic = files[0]
-  console.log('This is my pic', my_pic);
-
-
+  my_pic = files[0];
+  console.log('Upload photo: ', my_pic);
+  uploadImage(my_pic);
+  alert("Uploaded a photo successfully");
   // Configure Storage
+});
 
+function uploadImage(my_pic){
   const storage = firebase.storage().ref('SaveThePlaces/' + my_pic.name);;
-
   // 'file' comes from the Blob or File API
   storage.put(my_pic).then((snapshot) => {
     console.log('Uploaded a blob or file!', snapshot);
-
     storage
       .getDownloadURL()
       .then(function (url) {
@@ -98,14 +160,14 @@ document.getElementById("files").addEventListener("change", function (e) {
         document.getElementById("myframe").src = pic_url;
       })
       .catch(function (error) {
-        console.log("error encountered");
+        console.log("error encountered " + error);
       });
   });
-});
+}
+
 
 
 // add new place
-
 function add_place() {
   const form = document.querySelector('form');
   const place = {
@@ -118,7 +180,7 @@ function add_place() {
   db.collection("places").add(place)
     .then(function (docRef) {
       console.log("Document written with ID", docRef.id);
-      // alert(pic_url)
+      alert("Successfully upload an image!")
     })
     .catch(function (error) {
       console.error("Error adding document", error);
@@ -137,3 +199,5 @@ placeContainer.addEventListener('click', event => {
     location.reload('/')
   }
 })
+
+

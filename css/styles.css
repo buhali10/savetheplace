@@ -43,7 +43,7 @@ nav .sidenav-trigger{
     grid-area: image;
     width: 100%;
     margin-bottom: 8px;
-    height: 200px;
+    height: 300px;
     object-fit: cover;
 }
 
@@ -88,6 +88,30 @@ form .input-field{
 
 .btn{
     background: var(--name);
+}
+
+#side-form video, #side-form canvas {
+    width: 512px;
+    max-width: 100%;
+    display: none;
+    margin: auto;
+}
+
+#side-form #pick-image {
+    display: none;
+}
+
+#side-form #capture-btn {
+    margin-bottom: 10px;
+    display:block;
+    position:relative;
+    margin-left:auto;
+    margin-right:auto;
+    bottom: 25px;
+    background-color: var(--name);
+    font-family: "Lucida Grande", "Arial", sans-serif;
+    color: rgba(255, 255, 255, 1.0);
+    border-radius: 50%;
 }
 
 

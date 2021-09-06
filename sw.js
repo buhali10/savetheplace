@@ -1,4 +1,4 @@
-const staticCacheName = 'site-static-v5';
+const staticCacheName = 'site-static-v6';
 const dynamicCacheName = 'site-dynamic-v3';
 const assets = [
   '/',
@@ -16,8 +16,7 @@ const assets = [
   '/img/placeholder-image.png',
   'https://fonts.googleapis.com/icon?family=Material+Icons',
   'https://fonts.gstatic.com/s/materialicons/v47/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2',
-  '/pages/about.html', 
-  '/firebase-messaging-sw.js'
+  '/pages/about.html'
 ];
 
 // cache size limit function
@@ -33,7 +32,7 @@ const limitCacheSize = (name, size) => {
 
 // install event
 self.addEventListener('install', evt => {
-  //console.log('service worker installed');
+  console.log('service worker installed');
   evt.waitUntil(
     caches.open(staticCacheName).then((cache) => {
       console.log('caching shell assets');
@@ -44,7 +43,7 @@ self.addEventListener('install', evt => {
 
 // activate event
 self.addEventListener('activate', evt => {
-  //console.log('service worker activated');
+  console.log('service worker activated');
   evt.waitUntil(
     caches.keys().then(keys => {
       //console.log(keys);
