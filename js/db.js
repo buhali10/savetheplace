@@ -133,11 +133,11 @@ form.addEventListener('submit', evt => {
     .catch(function (error) {
       console.error("Error adding document", error);
     })
-
-    /* form.name.value = '';
-    form.city.value = '';
-    form.location_fill.value = '';
-    form.canvas */
+  location.reload('/');
+  /* form.name.value = '';
+  form.city.value = '';
+  form.location_fill.value = '';
+  form.canvas */
 });
 
 // remove a place
@@ -148,7 +148,6 @@ placeContainer.addEventListener('click', event => {
     //console.log(id);
     db.collection('places').doc(id).delete();
     console.log('Object' + id + 'is deleted')
-    location.reload('/')
   }
 });
 
