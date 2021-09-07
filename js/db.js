@@ -34,11 +34,7 @@ db.collection('places').onSnapshot(snapshot => {
   });
 });
 
-
-
 // camera access 
-
-
 if (!('mediaDevices' in navigator)) {
   navigator.mediaDevices = {};
 }
@@ -46,11 +42,9 @@ if (!('mediaDevices' in navigator)) {
 if (!('getUserMedia' in navigator.mediaDevices)) {
   navigator.mediaDevices.getUserMedia = function (constraints) {
     let getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-
     if (!getUserMedia) {
       return Promise.reject(new Error('getUserMedia is not implemented'));
     }
-
     return new Promise((resolve, reject) => {
       getUserMedia.call(navigator, constraints, resolve, reject);
     })
@@ -60,8 +54,8 @@ if (!('getUserMedia' in navigator.mediaDevices)) {
 navigator.mediaDevices.getUserMedia({ video: true })
   .then(stream => {
     videoPlayer.srcObject = stream;
-    videoPlayer.play();
     videoPlayer.style.display = 'block';
+    videoPlayer.play();
 
   })
   .catch(err => {
@@ -84,7 +78,6 @@ captureButton.addEventListener('click', event => {
   const storage = firebase.storage().ref('SaveThePlaces/' + new Date());;
   // 'file' comes from the Blob or File API
   storage.putString(my_pic, 'data_url').then((snapshot) => {
-    console.log('Uploaded a base64url string!', snapshot);
     storage
       .getDownloadURL()
       .then(function (url) {
@@ -103,7 +96,7 @@ var files = [];
 document.getElementById("image-picker").addEventListener("change", function (e) {
   files = e.target.files;
   my_pic = files[0]
-  console.log('This is my pic', my_pic);
+  console.log('Uploaded this photo: ', my_pic);
   // Configure Storage
   const storage = firebase.storage().ref('SaveThePlaces/' + my_pic.name);;
   // 'file' comes from the Blob or File API
@@ -122,11 +115,10 @@ document.getElementById("image-picker").addEventListener("change", function (e) 
   });
 });
 
-
-
 // add new place
-function add_place() {
-  const form = document.querySelector('form');
+const form = document.querySelector('form');
+form.addEventListener('submit', evt => {
+  evt.preventDefault();
   const place = {
     name: form.name.value,
     city: form.city.value,
@@ -137,12 +129,16 @@ function add_place() {
   db.collection("places").add(place)
     .then(function (docRef) {
       console.log("Document written with ID", docRef.id);
-      alert("Successfully upload an image!")
     })
     .catch(function (error) {
       console.error("Error adding document", error);
     })
-};
+
+    /* form.name.value = '';
+    form.city.value = '';
+    form.location_fill.value = '';
+    form.canvas */
+});
 
 // remove a place
 const placeContainer = document.querySelector('.places');
@@ -159,7 +155,6 @@ placeContainer.addEventListener('click', event => {
 // geolocation
 (function () {
   var locatorSection = document.getElementById("locator-input-section")
-
   function init() {
     var locatorButton = document.getElementById("locator-button");
     locatorButton.addEventListener("click", locatorButtonPressed)
@@ -167,7 +162,6 @@ placeContainer.addEventListener('click', event => {
 
   function locatorButtonPressed() {
     locatorSection.classList.add("loading")
-
     navigator.geolocation.getCurrentPosition(function (position) {
       getUserAddressBy(position.coords.latitude, position.coords.longitude)
     },
@@ -194,7 +188,7 @@ placeContainer.addEventListener('click', event => {
   }
 
   function setAddressToInputField(address) {
-    var input = document.getElementById("location-fill");
+    var input = document.getElementById("location_fill");
     input.value = address
     locatorSection.classList.remove("loading")
   }
