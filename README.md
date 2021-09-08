@@ -1,6 +1,9 @@
 # Savetheplace
 **Savetheplace** is my PWA project for the module "Aktuelle Trends der Informations- and Kommunikationstechnik" at HTW Berlin
 
+![image](https://user-images.githubusercontent.com/57114344/132533151-9efcae2f-7134-46b3-9747-08ee9d1d4b1c.png)
+
+
 ## Usage
  - Users can "save" the place that they find interesting, this includes saving an uploaded picture or (if allowed) taking pictures from user's camera, place name, city and the location.
  - The website will ask users for their permissions to access their locations and in the end, save it into the respective post (with name of the place and the city - these 2 informations should be added manually by users).
