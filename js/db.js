@@ -128,7 +128,7 @@ form.addEventListener('submit', evt => {
 
   db.collection("places").add(place)
     .then(function (docRef) {
-      console.log("Document written with ID", docRef.id);
+      console.log("Document written with ID ", docRef.id);
     })
     .catch(function (error) {
       console.error("Error adding document", error);
@@ -147,7 +147,7 @@ placeContainer.addEventListener('click', event => {
     const id = event.target.getAttribute('data-id');
     //console.log(id);
     db.collection('places').doc(id).delete();
-    console.log('Object' + id + 'is deleted')
+    console.log('Object ' + id + ' is deleted')
   }
 });
 
