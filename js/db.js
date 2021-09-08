@@ -7,7 +7,6 @@ let canvasElement = document.querySelector('#canvas');
 let captureButton = document.querySelector('#capture-btn');
 let imagePicker = document.querySelector('#image-picker');
 let imagePickerArea = document.querySelector('#pick-image');
-// let canvas = document.querySelector("#myframe");
 
 // enable offline data
 db.enablePersistence()
@@ -134,10 +133,6 @@ form.addEventListener('submit', evt => {
       console.error("Error adding document", error);
     })
   location.reload('/');
-  /* form.name.value = '';
-  form.city.value = '';
-  form.location_fill.value = '';
-  form.canvas */
 });
 
 // remove a place
