@@ -14,7 +14,7 @@
 
 | When camera access is not allowed | When camera access is allowed  |
 |--|--|
-| screenshot | screenshot |
+| ![image](https://user-images.githubusercontent.com/57114344/132742013-79deaa9c-d7f6-489b-bbe8-184d9a56a2f4.png) | ![image](https://user-images.githubusercontent.com/57114344/132742298-659cd62b-c7c1-4ec7-a6ad-9c0f35cc507f.png) |
 
 ## Install Button
 After users clicks on the install button, the web app will be installed on users's desktop or home screen and the button will disappear. 
