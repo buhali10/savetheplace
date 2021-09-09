@@ -6,6 +6,9 @@
  - The website will ask users for their permissions to access their locations and in the end, save it into the respective post (with name of the place and the city - these fields need to be added manually by users).
  - When users click on "Go To Map", they will be linked to a Google Map site.
 
+## Try it yourself:
+Link to **Savetheplace**:
+
 ## Sites
 ### Landing page
 ![image](https://user-images.githubusercontent.com/57114344/132533151-9efcae2f-7134-46b3-9747-08ee9d1d4b1c.png)
@@ -34,5 +37,3 @@ Progressive Web Apps are web applications that have been designed so they are **
 - **Installable**: **Savetheplace** can run in a standalone window instead of a browser tab. It is launchable from on the user's home screen, dock, taskbar, or shelf. It's possible to search for them on a device and jump between them with the app switcher, making them feel like part of the device they're installed on.
 
 
-## Demo
-Here is a working live demo : 
