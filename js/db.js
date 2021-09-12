@@ -20,7 +20,6 @@ db.enablePersistence()
     }
   });
 
-
 // real-time listener
 db.collection('places').onSnapshot(snapshot => {
   snapshot.docChanges().forEach(change => {
