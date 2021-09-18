@@ -1,5 +1,5 @@
 const places = document.querySelector('.places');
-
+const cardDetails = document.querySelector('.card-panel')
 document.addEventListener('DOMContentLoaded', function() {
   // nav menu
   const menus = document.querySelectorAll('.side-menu');
@@ -35,41 +35,26 @@ const removeplace = (id) => {
   place.remove();
 };
 
-
-// Initialize deferredPrompt for use later to show browser install prompt.
 let deferredPrompt;
 const installApp = document.getElementById('installApp');
 installApp.style.display = 'none';
 
 window.addEventListener('beforeinstallprompt', (e) => {
-  // Prevent the mini-infobar from appearing on mobile
-  e.preventDefault();
-  // Stash the event so it can be triggered later.
-  deferredPrompt = e;
-  // Update UI notify the user they can install the PWA
-  showInstallPromotion();
-  // Optionally, send analytics event that PWA install promo was shown.
-  console.log(`'beforeinstallprompt' event was fired.`);
   installApp.style.display = 'block';
-
-  installApp.addEventListener('click', async () => {
-      installApp.style.display = 'none'
-      // The user has had a postive interaction with our app and Chrome
-      // has tried to prompt previously, so let's show the prompt.
-      deferredPrompt.prompt();
-      // Follow what the user has done with the prompt.
-      deferredPrompt.userChoice.then(function(choiceResult) {
-        if(choiceResult.outcome == 'dismissed') {
-          console.log('User cancelled home screen install');
-        }
-        else {
-          console.log('User added to home screen');
-        }
-        // We no longer need the prompt.  Clear it up.
-        deferredPrompt = null;
-      });
-  });
-
+  e.preventDefault();
+  deferredPrompt = e;
+  console.log(`'beforeinstallprompt' event was fired.`);
 });
 
+installApp.addEventListener('click', async () => {
+  deferredPrompt.prompt();
+  const { outcome } = await deferredPrompt.userChoice;
+  console.log(`User response to the install prompt: ${outcome}`);
+  deferredPrompt = null;
+});
 
+window.addEventListener('appinstalled', () => {
+  installApp.style.display = 'none'
+  deferredPrompt = null;
+  console.log('PWA was installed');
+});

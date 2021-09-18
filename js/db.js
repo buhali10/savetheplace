@@ -8,15 +8,17 @@ let captureButton = document.querySelector('#capture-btn');
 let imagePicker = document.querySelector('#image-picker');
 let imagePickerArea = document.querySelector('#pick-image');
 
-// enable offline data
+// From this moment any document received from the server 
+// is stored locally in an Indexed DB
+
 db.enablePersistence()
   .catch(function (err) {
     if (err.code == 'failed-precondition') {
-      // probably multible tabs open at once
-      console.log('persistance failed');
+      // multible tabs open at once
+      console.log('Multiple tabs open!!! Persistence can only be enabled in one tab at a time')
     } else if (err.code == 'unimplemented') {
       // lack of browser support for the feature
-      console.log('persistance not available');
+      console.log('Lack of browser support for this feature');
     }
   });
 

@@ -1,5 +1,5 @@
-const staticCacheName = 'site-static-v10';
-const dynamicCacheName = 'site-dynamic-v7';
+const staticCacheName = 'site-static-v11';
+const dynamicCacheName = 'site-dynamic-v8';
 const assets = [
   '/',
   '/index.html',
@@ -31,9 +31,9 @@ const limitCacheSize = (name, size) => {
 };
 
 // install event
-self.addEventListener('install', evt => {
+self.addEventListener('install', event => {
   // console.log('service worker installed');
-  evt.waitUntil(
+  event.waitUntil(
     caches.open(staticCacheName).then((cache) => {
       console.log('caching shell assets');
       cache.addAll(assets);
@@ -42,9 +42,9 @@ self.addEventListener('install', evt => {
 });
 
 // activate event
-self.addEventListener('activate', evt => {
+self.addEventListener('activate', event => {
   // console.log('service worker activated');
-  evt.waitUntil(
+  event.waitUntil(
     caches.keys().then(keys => {
       //console.log(keys);
       return Promise.all(keys
@@ -56,20 +56,25 @@ self.addEventListener('activate', evt => {
 });
 
 // fetch events
-self.addEventListener('fetch', evt => {
-  if(evt.request.url.indexOf('firestore.googleapis.com') === -1){
-    evt.respondWith(
-      caches.match(evt.request).then(cacheRes => {
-        return cacheRes || fetch(evt.request).then(fetchRes => {
-          return caches.open(dynamicCacheName).then(cache => {
-            cache.put(evt.request.url, fetchRes.clone());
+self.addEventListener('fetch', event => {
+  if(event.request.url.indexOf('firestore.googleapis.com') === -1){
+    event.respondWith(
+      caches.match(event.request)
+      .then(cacheRes => {
+        // if the caches request doesn't match what we pre-cached (cacheRes is empty)
+        // then return the fetch request response?
+        return cacheRes || fetch(event.request)
+        .then(fetchRes => {
+          return caches.open(dynamicCacheName)
+          .then(cache => {
+            cache.put(event.request.url, fetchRes.clone());
             // check cached items size
             limitCacheSize(dynamicCacheName, 15);
             return fetchRes;
           })
         });
       }).catch(() => {
-        if(evt.request.url.indexOf('.html') > -1){
+        if(event.request.url.indexOf('.html') > -1){
           return caches.match('/pages/fallback_page.html');
         }
       })
