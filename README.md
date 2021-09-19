@@ -27,7 +27,7 @@ Gif
 ## Used technologies 
 
 - Frontend: HTML & CSS with [Materialize](https://materializecss.com/): A modern responsive CSS framework based on Material Design by Google.
-- Backend: [Firebase](https://firebase.google.com/): A Backend-as-a-Service (BaaS) app development platform developed by Google that provides hosted backend services. **Savetheplace** uses its NoSQL cloud storage, and hosting static files services. 
+- Backend: [Firebase](https://firebase.google.com/): A Backend-as-a-Service (BaaS) app development platform developed by Google that provides hosted backend services. **Savetheplace** uses **Cloud Firestore** (to store and sync data for client- and server-side development), **Cloud Storage for Firebase** (to store and serve user-generated content, such as photos or videos) and **Firebase Hosting** (fast and secure hosting service for web app, static and dynamic content, and microservices).
 
 ## About Progessive Web App
 
