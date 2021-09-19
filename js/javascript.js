@@ -22,7 +22,7 @@ const renderplace = (data, id) => {
     <div class="place-details">
       <div class="place-name">${data.name}</div>
       <div class="place-city">${data.city}</div>
-      <div class="image"><img src="${data.picurl}"></div>
+      <div class="image"><img src="${data.picurl}" onerror="this.onerror=null; this.src='img/error_photo.png';"></div>
        <div class="card-action">
        <a target="_blank" href="https://www.google.com/maps/search/?api=1&query=${data.location.latitude},${data.location.longitude}">Go To Map</a>
      </div>

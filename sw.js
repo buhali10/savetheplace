@@ -13,6 +13,7 @@ const assets = [
   '/img/icons/icon-384x384.png',
   '/img/icons/icon-512x512.png',
   '/img/my-logo.png',
+  '/img/error_photo.png',
   '/img/placeholder-image.png',
   'https://fonts.googleapis.com/icon?family=Material+Icons',
   'https://fonts.gstatic.com/s/materialicons/v47/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2'

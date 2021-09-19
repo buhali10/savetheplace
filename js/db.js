@@ -74,7 +74,7 @@ captureButton.addEventListener('click', event => {
    }) */
   my_pic = canvasElement.toDataURL('image/jpeg');
   // data url of the image
-  console.log("Captured this photo " + my_pic);
+  // console.log("Captured this photo " + my_pic);
   const storage = firebase.storage().ref('SaveThePlaces/' + new Date());;
   // 'file' comes from the Blob or File API
   storage.putString(my_pic, 'data_url').then((snapshot) => {
@@ -96,12 +96,12 @@ var files = [];
 document.getElementById("image-picker").addEventListener("change", function (e) {
   files = e.target.files;
   my_pic = files[0]
-  console.log('Uploaded this photo: ', my_pic);
+  // console.log('Uploaded this photo: ', my_pic);
   // Configure Storage
   const storage = firebase.storage().ref('SaveThePlaces/' + my_pic.name);
   // 'file' comes from the Blob or File API
   storage.put(my_pic).then((snapshot) => {
-    console.log('Uploaded a blob or file!', snapshot);
+    console.log('Uploaded a blob or file to Cloud Storage!', snapshot);
     storage
       .getDownloadURL()
       .then(function (url) {
@@ -144,7 +144,7 @@ placeContainer.addEventListener('click', event => {
   if (event.target.tagName === 'I') {
     const id = event.target.getAttribute('data-id');
     db.collection('places').doc(id)
-      .onSnapshot((doc) => {
+      .get((doc) => {
         deletepath = doc.data().picurl;
         deletefile = firebase.storage().refFromURL(deletepath).name;
         firebase.storage().ref('SaveThePlaces/' + deletefile).delete().then(() => {
