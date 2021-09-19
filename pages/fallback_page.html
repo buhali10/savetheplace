@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,22 +23,35 @@
   <nav class="z-depth-0">
     <div class="nav-wrapper container">
       <a href="/"><span>Save the place</span></a>
-      <ul class="right">
-        <li><a><i class="material-icons sidenav-trigger" data-target="side-menu">menu</i></a></li>
+      <ul class="right hide-on-med-and-down">
+        <li> <a class="waves-effect waves-light btn" id="installApp">Install
+            <i class="material-icons right">get_app</i></a></li>
+        <li><a class="modal-trigger" href="#aboutModal" style="color: #1C6E55">About</a></li>
       </ul>
+
     </div>
   </nav>
 
-
-  <!-- side nav -->
-  <ul id="side-menu" class="sidenav side-menu">
-    <li><a class="subheader">SAVE THE PLACE</a></li>
-    <li>
+  <!-- modal -->
+  <div id="aboutModal" class="modal">
+    <div class="modal-content">
+      <h4 style="color: #1C6E55;">Welcome to Save The Place &#127983; &#127984; &#127979;</h4>
       <div class="divider"></div>
-    </li>
-    <li><a href="/">Home</a></li>
-    <li><a href="/pages/about.html" class="waves-effect">About</a></li>
-  </ul>
+      <ul> <b style="color: #1C6E55;">Save The Place</b> is a Progessive Web App. It helps you to save the wonderful
+        places that you've been to and would like to share, using these features: </ul>
+      <li> Of course, marking your location</li>
+      <li> Taking a photo with your camera, or </li>
+      <li> Uploading an existed photo from your photo album, if you don't allow camera access </li>
+      <li> Deleting photo if you think you can take a better photo &#128540;</li>
+      <li> Installing the Web App onto your Desktop/ Home Screen </li>
+      <li> Saving the place also when you have no internet connection </li>
+      </ul>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close btn">Close</a>
+    </div>
+  </div>
+
 
   <!-- content -->
   <div class="container grey-text center">

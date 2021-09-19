@@ -1,5 +1,5 @@
-const staticCacheName = 'site-static-v11';
-const dynamicCacheName = 'site-dynamic-v8';
+const staticCacheName = 'site-static-v12';
+const dynamicCacheName = 'site-dynamic-v9';
 const assets = [
   '/',
   '/index.html',
@@ -15,8 +15,8 @@ const assets = [
   '/img/my-logo.png',
   '/img/placeholder-image.png',
   'https://fonts.googleapis.com/icon?family=Material+Icons',
-  'https://fonts.gstatic.com/s/materialicons/v47/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2',
-  '/pages/about.html'
+  'https://fonts.gstatic.com/s/materialicons/v47/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2'
+  //'/pages/fallback_page_html'
 ];
 
 // cache size limit function
@@ -58,10 +58,11 @@ self.addEventListener('activate', event => {
 // fetch events
 self.addEventListener('fetch', event => {
   if(event.request.url.indexOf('firestore.googleapis.com') === -1){
+    // console.log('fetching', event);
     event.respondWith(
       caches.match(event.request)
       .then(cacheRes => {
-        // if the caches request doesn't match what we pre-cached (cacheRes is empty)
+        // if the caches respone doesn't match what we pre-cached (cacheRes is empty)
         // then return the fetch request response?
         return cacheRes || fetch(event.request)
         .then(fetchRes => {
@@ -69,7 +70,7 @@ self.addEventListener('fetch', event => {
           .then(cache => {
             cache.put(event.request.url, fetchRes.clone());
             // check cached items size
-            limitCacheSize(dynamicCacheName, 15);
+            limitCacheSize(dynamicCacheName, 30);
             return fetchRes;
           })
         });

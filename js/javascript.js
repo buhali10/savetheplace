@@ -1,12 +1,17 @@
 const places = document.querySelector('.places');
-const cardDetails = document.querySelector('.card-panel')
+
 document.addEventListener('DOMContentLoaded', function() {
-  // nav menu
-  const menus = document.querySelectorAll('.side-menu');
-  M.Sidenav.init(menus, {edge: 'right'});
   // add place form
   const forms = document.querySelectorAll('.side-form');
   M.Sidenav.init(forms, {edge: 'left'});
+  // modal
+  const elems = document.querySelectorAll('.modal');
+  const instance = M.Modal.init(elems, {dismissible: false});
+  // floating button group
+  var buttonGroup = document.querySelectorAll('.fixed-action-btn');
+  var instances2 = M.FloatingActionButton.init(buttonGroup, {
+    direction: 'top'
+  });
 });
 
 
@@ -37,24 +42,25 @@ const removeplace = (id) => {
 
 let deferredPrompt;
 const installApp = document.getElementById('installApp');
+
 installApp.style.display = 'none';
 
 window.addEventListener('beforeinstallprompt', (e) => {
-  installApp.style.display = 'block';
   e.preventDefault();
   deferredPrompt = e;
   console.log(`'beforeinstallprompt' event was fired.`);
+  installApp.style.display = 'block';
 });
 
 installApp.addEventListener('click', async () => {
   deferredPrompt.prompt();
   const { outcome } = await deferredPrompt.userChoice;
-  console.log(`User response to the install prompt: ${outcome}`);
+  // console.log(`User response to the install prompt: ${outcome}`);
   deferredPrompt = null;
 });
 
 window.addEventListener('appinstalled', () => {
-  installApp.style.display = 'none'
+  installApp.style.display = 'none';
   deferredPrompt = null;
   console.log('PWA was installed');
 });

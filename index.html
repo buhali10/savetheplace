@@ -24,10 +24,11 @@
         <div class="nav-wrapper container">
             <a href="/"><span>Save the place</span></a>
             <ul class="right">
-                <li><a class="waves-effect waves-light btn" id="installApp">
-                        <i class="material-icons center">get_app</i></a></li>
-                <li><a><i class="material-icons sidenav-trigger" data-target="side-menu">menu</i></a></li>
+                <!-- <li><a class="btn center" id="installApp">Install
+                        <i class="material-icons right">get_app</i></a></li> -->
+                <li><a class="modal-trigger" href="#aboutModal" style="color: #1C6E55">About</a></li>
             </ul>
+
         </div>
     </nav>
 
@@ -35,20 +36,35 @@
         <a class="btn-floating btn-large add-btn sidenav-trigger pulse" data-target="side-form">
             <i class="material-icons">add</i>
         </a>
+        <ul>
+            <li><a class="btn-floating red" id="installApp"><i class="material-icons">get_app</i></a></li>
+        </ul>
     </div>
 
-    <!-- side nav -->
-    <ul id="side-menu" class="sidenav side-menu">
-        <li><a class="subheader">SAVE THE PLACE</a></li>
-        <li>
+    <!-- modal -->
+    <div id="aboutModal" class="modal">
+        <div class="modal-content">
+            <h4 style="color: #1C6E55;">Welcome to Save The Place &#127983; &#127984; &#127979;</h4>
             <div class="divider"></div>
-        </li>
-        <li><a href="/">Home</a></li>
-        <li><a href="/pages/about.html" class="waves-effect">About</a></li>
-    </ul>
+            <ul> <b style="color: #1C6E55;">Save The Place</b> is a Progessive Web App. It helps you to save the
+                wonderful places that you've been to and would like to share, using these features: </ul>
+            <li> Of course, marking your location</li>
+            <li> Taking a photo with your camera, or </li>
+            <li> Uploading an existing photo from your photo album, if you don't allow camera access </li>
+            <li> Deleting photo if you think you can take a better photo &#128540;</li>
+            <li> Installing the Web App onto your Desktop/ Home Screen </li>
+            <li> Saving the places even when you have no internet connection </li>
+            </ul>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close btn">Close</a>
+        </div>
+    </div>
+
+
     <!-- places -->
     <div class="places container grey-text text-darken-1">
-        <div class="post-details" style="display: none;"></div>
+        <div class="post-open" style="display: none;"></div>
     </div>
 
     <!-- add place side nav -->
