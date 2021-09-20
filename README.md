@@ -7,7 +7,7 @@
  - When users click on "Go To Map", they will be linked to a Google Map site.
 
 ## Try it yourself:
-Link to **Savetheplace**:
+Link to **Savetheplace**: https://save-the-place-app.web.app/
 
 ## Sites
 ### Landing page
@@ -21,7 +21,6 @@ Link to **Savetheplace**:
 
 ## Install Button
 After users clicks on the install button, the web app will be installed on users's desktop or home screen and the button will disappear. 
-Gif
 
 
 ## Used technologies 
