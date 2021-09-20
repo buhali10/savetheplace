@@ -10,7 +10,8 @@ document.addEventListener('DOMContentLoaded', function() {
   // floating button group
   var buttonGroup = document.querySelectorAll('.fixed-action-btn');
   var instances2 = M.FloatingActionButton.init(buttonGroup, {
-    direction: 'top'
+    direction: 'top',
+    hoverEnabled: false
   });
 });
 
